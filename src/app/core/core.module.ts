@@ -1,5 +1,6 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
@@ -17,6 +18,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     CommonModule,
     CoreRoutingModule,
+    FormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
