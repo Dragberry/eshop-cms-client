@@ -4,7 +4,6 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { AuthGuard } from './auth/auth.guard';
 
-
 @NgModule({
     imports: [RouterModule.forRoot([
         {
