@@ -1,7 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, JsonpInterceptor } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
@@ -9,6 +9,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
 import { AuthGuard } from './auth/auth.guard';
 import { CoreRoutingModule } from './core-routing.module';
+import { AuthenticationService } from './auth/authentication.service';
+import { httpInterceptorProviders } from './http';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -33,9 +35,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainComponent
   ],
   exports: [CoreRoutingModule],
-  providers: [
-    AuthGuard
-  ]
+  providers: []
 })
 export class CoreModule {
 
@@ -51,7 +51,9 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
-        AuthGuard
+        AuthenticationService,
+        AuthGuard,
+        httpInterceptorProviders
       ]
     };
   }
