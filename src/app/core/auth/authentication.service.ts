@@ -34,10 +34,10 @@ export class AuthenticationService {
     logout(): void {
         localStorage.removeItem(currentUserToken);
         localStorage.removeItem(currentUser);
-        this.userDetails = undefined;
+        this.userDetails = null;
     }
 
     isLogged(): boolean {
-        return this.userDetails || JSON.parse(localStorage.getItem(currentUser));
+        return this.userDetails != null || JSON.parse(localStorage.getItem(currentUser)) != null;
     }
 }

@@ -12,6 +12,8 @@ import { CoreRoutingModule } from './core-routing.module';
 import { AuthenticationService } from './auth/authentication.service';
 import { httpInterceptorProviders } from './http';
 
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
@@ -28,7 +30,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    BsDropdownModule.forRoot()
   ],
   declarations: [
     LoginComponent,
