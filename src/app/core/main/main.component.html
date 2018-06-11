@@ -18,10 +18,14 @@
       <li class="nav-item dropdown">
           <span dropdown>
               <a dropdownToggle href="#" class="nav-link dropdown-toggle" aria-controls="dropdown-basic">
-                Russian
+                {{ 'language.' + currentLang | translate }}
               </a>
               <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-                <li role="menuitem"><a class="dropdown-item" href="#">English</a></li>
+                <ng-template ngFor let-l [ngForOf]="languages">
+                  <li *ngIf="l != currentLang" role="menuitem">
+                    <a class="dropdown-item" href="#" (click)="onLanguageChanged(l)">{{ 'language.' + l | translate }}</a>
+                  </li>
+                </ng-template>
               </ul>
           </span>
         </li>
@@ -31,10 +35,12 @@
                 Makseemka
               </a>
               <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-                <li role="menuitem"><a class="dropdown-item" href="#">Account</a></li>
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">{{ 'common.account' | translate }}</a>
+                </li>
                 <li class="divider dropdown-divider"></li>
                 <li role="menuitem">
-                  <a class="dropdown-item" (click)="logout()">Sign out</a>
+                  <a class="dropdown-item" (click)="logout()">{{ 'common.sign-out' | translate }}</a>
                 </li>
               </ul>
           </span>

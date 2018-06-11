@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService, LOGIN_URL } from '../auth/authentication.service';
 import { Router } from '@angular/router';
@@ -11,14 +12,26 @@ export class MainComponent implements OnInit {
 
   isCollapsed = true;
 
+  languages = ['ru', 'en'];
+  currentLang = 'en';
+
   constructor(
     private authService: AuthenticationService,
-    private router: Router) { }
+    private router: Router,
+    private translate: TranslateService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.currentLang = this.translate.getDefaultLang();
+   }
 
   logout(): void {
     this.authService.logout();
     this.router.navigate([LOGIN_URL]);
+  }
+
+  onLanguageChanged(lang: string): void {
+    this.currentLang = lang;
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
   }
 }

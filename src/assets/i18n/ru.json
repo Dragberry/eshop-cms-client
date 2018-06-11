@@ -1,0 +1,24 @@
+{
+    "login": {
+        "forgot-password": "Забыли пароль?",
+        "login-page": "Страница входа",
+        "password": "Пароль",
+        "remember-me": "Запомнить меня",
+        "sign-in": "Войти",
+        "username": "Имя пользователя",
+        "error": {
+            "401": "Имя пользователя и/или пароль не верны!",
+			"general": "Произошла ошибка на сервере!",
+            "password-is-required": "Вы не ввели пароль!",
+            "username-is-required": "Вы не ввели имя пользователя!"
+        }
+    },
+    "common": {
+      "account": "Аккаунт",
+      "sign-out": "Выйти"
+    },
+    "language": {
+      "en": "English",
+      "ru": "Русский"
+    }
+}
