@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../auth/authentication.service';
+import { AuthenticationService, LOGIN_URL } from '../auth/authentication.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
+  isCollapsed = true;
+
   constructor(
     private authService: AuthenticationService,
     private router: Router) { }
@@ -17,6 +19,6 @@ export class MainComponent implements OnInit {
 
   logout(): void {
     this.authService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate([LOGIN_URL]);
   }
 }
