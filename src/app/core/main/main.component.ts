@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService, LOGIN_URL } from '../auth/authentication.service';
 import { Router } from '@angular/router';
 
+const CURRENT_LANG = 'currentLang';
+const EN = 'en';
+const RU = 'ru';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -12,8 +16,8 @@ export class MainComponent implements OnInit {
 
   isCollapsed = true;
 
-  languages = ['ru', 'en'];
-  currentLang = 'en';
+  languages = [EN, RU];
+  currentLang = EN;
 
   constructor(
     private authService: AuthenticationService,
@@ -21,7 +25,7 @@ export class MainComponent implements OnInit {
     private translate: TranslateService) { }
 
   ngOnInit() {
-    this.currentLang = this.translate.getDefaultLang();
+    this.currentLang = localStorage.getItem(CURRENT_LANG) || EN;
    }
 
   logout(): void {
@@ -30,6 +34,7 @@ export class MainComponent implements OnInit {
   }
 
   onLanguageChanged(lang: string): void {
+    localStorage.setItem(CURRENT_LANG, lang);
     this.currentLang = lang;
     this.translate.setDefaultLang(lang);
     this.translate.use(lang);

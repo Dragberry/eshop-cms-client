@@ -15,6 +15,7 @@
     },
     "common": {
       "account": "Account",
+      "search": "Search",
       "sign-out": "Sign out"
     },
     "language": {
