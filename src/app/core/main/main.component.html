@@ -47,29 +47,9 @@
 </nav>
 <div class="container-fluid">
   <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/orders">Orders</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/products">Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/customers">Customers</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <app-side-menu></app-side-menu>
     <main role="main" class="col-md-10 ml-sm-auto col-lg-10 pt-3 px-4">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Library</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Data</li>
-          </ol>
-        </nav>
+      <app-breadcrumb></app-breadcrumb>
         <h1 class="h4">Dashboard</h1>
       <router-outlet></router-outlet>
     </main>

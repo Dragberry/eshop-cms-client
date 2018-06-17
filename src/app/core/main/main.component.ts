@@ -25,7 +25,7 @@ export class MainComponent implements OnInit {
     private translate: TranslateService) { }
 
   ngOnInit() {
-    this.currentLang = localStorage.getItem(CURRENT_LANG) || EN;
+    this.onLanguageChanged(localStorage.getItem(CURRENT_LANG) || EN);
    }
 
   logout(): void {

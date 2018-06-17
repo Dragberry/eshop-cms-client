@@ -14,6 +14,9 @@ import { httpInterceptorProviders } from './http';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { NavigationService } from './service/navigation.service';
+import { BreadcrumbComponent } from './main/breadcrumb/breadcrumb.component';
+import { SideMenuComponent } from './main/side-menu/side-menu.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -37,7 +40,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   declarations: [
     LoginComponent,
-    MainComponent
+    MainComponent,
+    BreadcrumbComponent,
+    SideMenuComponent
   ],
   exports: [CoreRoutingModule],
   providers: []
@@ -58,7 +63,8 @@ export class CoreModule {
       providers: [
         AuthenticationService,
         AuthGuard,
-        httpInterceptorProviders
+        httpInterceptorProviders,
+        NavigationService
       ]
     };
   }
