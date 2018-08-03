@@ -1,7 +1,7 @@
-import { TranslateService } from '@ngx-translate/core';
-import { Component, OnInit } from '@angular/core';
-import { AuthenticationService, LOGIN_URL } from '../auth/authentication.service';
-import { Router } from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthenticationService, LOGIN_URL} from '../auth/authentication.service';
+import {Router} from '@angular/router';
 
 const CURRENT_LANG = 'currentLang';
 const EN = 'en';
@@ -19,14 +19,18 @@ export class MainComponent implements OnInit {
   languages = [EN, RU];
   currentLang = EN;
 
+  loggedUser: any;
+
   constructor(
     private authService: AuthenticationService,
     private router: Router,
-    private translate: TranslateService) { }
+    private translate: TranslateService) {}
 
   ngOnInit() {
     this.onLanguageChanged(localStorage.getItem(CURRENT_LANG) || EN);
-   }
+    this.loggedUser = this.authService.getUserDetails();
+    console.log(this.loggedUser);
+  }
 
   logout(): void {
     this.authService.logout();

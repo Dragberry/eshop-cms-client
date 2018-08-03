@@ -42,4 +42,8 @@ export class AuthenticationService {
     isLogged(): boolean {
         return this.userDetails != null || JSON.parse(localStorage.getItem(CURRENT_USER)) != null;
     }
+  
+   getUserDetails(): any {
+     return JSON.parse(localStorage.getItem(CURRENT_USER)).userDetails;
+   }
 }

@@ -1,5 +1,6 @@
 import { NavigationService } from './../../service/navigation.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router, RouterEvent, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -10,13 +11,19 @@ export class BreadcrumbComponent implements OnInit {
 
   links: { title: string, link: string }[];
 
-  constructor(private navigationService: NavigationService) { }
+  constructor(
+    private navigationService: NavigationService,
+    private router: Router) { }
 
   ngOnInit() {
     this.links = [];
-    this.links.push({title: 'Dashboard', link: '/dashboard' });
-    this.links.push({title: 'Product list', link: '/products/list' });
-    this.links.push({title: 'Product details: Smart watch DZ09', link: '/products/list/details/1000' });
+    this.router.events.subscribe((event: RouterEvent) => {
+      if (event instanceof  NavigationEnd) {
+        this.links.push({title: event.urlAfterRedirects, link: event.urlAfterRedirects });
+        console.log(event);
+      }
+    });
+    this.links = [];
   }
 
 }

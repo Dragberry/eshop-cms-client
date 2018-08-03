@@ -33,7 +33,7 @@
             <li class="nav-item dropdown dropdown-nav-item">
               <div dropdown class="dropdown">
                 <button dropdownToggle id="accountMenu" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Makseemka
+                  {{ loggedUser.username }}
                 </button>
                 <div *dropdownMenu class="dropdown-menu" aria-labelledby="accountMenu">
                   <button class="dropdown-item" type="button">{{ 'common.account' | translate }}</button>
