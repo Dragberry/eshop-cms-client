@@ -23,7 +23,6 @@ export class BreadcrumbComponent implements OnInit {
         console.log(event);
       }
     });
-    this.links = [];
   }
 
 }

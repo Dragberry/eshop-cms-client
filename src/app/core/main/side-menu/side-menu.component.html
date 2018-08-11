@@ -2,7 +2,7 @@
   <div class="sidebar-sticky">
     <ul *ngIf="mainMenu" class="nav flex-column">
       <li *ngFor="let menuItem of mainMenu" class="nav-item">
-          <a class="nav-link" [routerLink]="menuItem.action" [routerLinkActive]="'active'">{{ menuItem.title}}</a>
+          <a class="nav-link" [routerLink]="menuItem.action" [routerLinkActive]="'active'">{{ menuItem.title | translate}}</a>
       </li>
     </ul>
   </div>

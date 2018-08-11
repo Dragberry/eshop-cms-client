@@ -1,6 +1,8 @@
 import {TranslateService} from '@ngx-translate/core';
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService, LOGIN_URL} from '../auth/authentication.service';
+import {TitleService} from '../service/title.service';
+import { Title } from '@angular/platform-browser';
 import {Router} from '@angular/router';
 
 const CURRENT_LANG = 'currentLang';
@@ -20,15 +22,22 @@ export class MainComponent implements OnInit {
   currentLang = EN;
 
   loggedUser: any;
+  titleString: string;
 
   constructor(
     private authService: AuthenticationService,
     private router: Router,
-    private translate: TranslateService) {}
+    private translate: TranslateService,
+    private title: Title,
+    private titleService: TitleService) {}
 
   ngOnInit() {
     this.onLanguageChanged(localStorage.getItem(CURRENT_LANG) || EN);
     this.loggedUser = this.authService.getUserDetails();
+    this.titleService.source.subscribe(title => {
+      this.titleString = title;
+      this.title.setTitle(title);
+    });
     console.log(this.loggedUser);
   }
 

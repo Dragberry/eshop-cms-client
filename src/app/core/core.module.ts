@@ -18,6 +18,7 @@ import { NavigationService } from './service/navigation.service';
 import { BreadcrumbComponent } from './main/breadcrumb/breadcrumb.component';
 import { SideMenuComponent } from './main/side-menu/side-menu.component';
 import { MenuItemComponent } from './main/side-menu/menu-item/menu-item.component';
+import { TitleService } from './service/title.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -66,7 +67,8 @@ export class CoreModule {
         AuthenticationService,
         AuthGuard,
         httpInterceptorProviders,
-        NavigationService
+        NavigationService,
+        TitleService
       ]
     };
   }

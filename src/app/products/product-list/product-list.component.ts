@@ -1,4 +1,6 @@
+import { TitleService } from '../../core/service/title.service';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-list',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService: TitleService) { }
 
   ngOnInit() {
+    this.titleService.setTitleKey('products.product-list.title');
   }
 
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuItem } from './menu-item';
+import {NavigationService} from '../../service/navigation.service';
+import {Component, OnInit} from '@angular/core';
+import {MenuItem} from './menu-item';
 
 @Component({
   selector: 'app-side-menu',
@@ -10,14 +11,13 @@ export class SideMenuComponent implements OnInit {
 
   mainMenu: MenuItem[];
 
-  constructor() { }
+  constructor(private navigationService: NavigationService) {}
 
   ngOnInit() {
-    this.mainMenu = [];
-    this.mainMenu.push({id: 'dashboard', title: 'Dashboard', action: '/dashboard', roles: [], subMenu: []});
-    this.mainMenu.push({id: 'products', title: 'Products', action: '/products', roles: [], subMenu: []});
-    this.mainMenu.push({id: 'orders', title: 'Orders', action: '/orders', roles: [], subMenu: []});
-    this.mainMenu.push({id: 'customers', title: 'Customers', action: '/customers', roles: [], subMenu: []});
+    this.navigationService.loadMainMenu().subscribe(mainMenu => {
+      this.mainMenu = mainMenu;
+    });
+
   }
 
 }
